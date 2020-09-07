@@ -54,7 +54,7 @@ cp $(pwd)/${OUT_DIR}/arch/arm64/boot/Image.gz-dtb $(pwd)/anykernel/
 cp $(pwd)/${OUT_DIR}/arch/arm64/boot/dtbo.img $(pwd)/anykernel/
 
 cd anykernel
-zip -r9 ${ZIPNAME} *
+zip -r9 ${ZIPNAME} * -x .git .gitignore *.zip
 CHECKER=$(ls -l ${ZIPNAME} | awk '{print $5}')
 if (($((CHECKER / 1048576)) > 5)); then
 	gdrive upload ${ZIPNAME}
